@@ -13,7 +13,19 @@ describe('breedFetcher', () => {
     assert.equal(expectedDesc, description.trim());
     assert.equal(expectedName, name.trim());
   });
+
+  it('returns an error for an unfound breed, asynchronously', async() => {
+
+    let err = null;
+    try {
+      await breedFetcher('Rottweiler');
+    } catch (error) {
+      err = error;
+    }
+    assert.equal(err, "No results found");
+  });
 });
+
 
 describe('fetchBreedDescription', () => {
   it('returns a string description for a valid breed, via callback', (done) => {
@@ -25,6 +37,15 @@ describe('fetchBreedDescription', () => {
 
       // compare returned description
       assert.equal(expectedDesc, desc.trim());
+
+      done();
+    });
+  });
+
+  it('returns an error message via callback if the breed is not found', (done) => {
+    fetchBreedDescription('Rottweiler', (err) => {
+      // we expect an error for this scenario
+      assert.equal(err, "No results found");
 
       done();
     });
