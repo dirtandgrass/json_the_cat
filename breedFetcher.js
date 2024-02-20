@@ -1,6 +1,8 @@
 const req = require('request');
 
 
+
+
 // search thecatapi with the query parameter
 const queryBreedInfo = async query => {
   return new Promise((resolve,reject) => {
@@ -25,6 +27,20 @@ const queryBreedInfo = async query => {
 
 
 (async() => {
-  const data = await queryBreedInfo("persz");
-  console.log("data:",data, "datalength:", data.length);
+  // get the query
+  const query = process.argv[2];
+  if (!query) return console.log("Usage node breedFetcher.js <breed name>");
+
+  try {
+    const data = await queryBreedInfo(query);
+    console.log(data.length + " result(s) found");
+    data.forEach(breed => {
+      console.log("Breed: " + breed.name);
+      console.log("Description: " + breed.description);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+
+
 })();
