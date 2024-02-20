@@ -21,9 +21,21 @@ const breedFetcher = async query => {
   });
 };
 
+
+// uses a callback to return the description of the breed, so can follow activity
+const fetchBreedDescription = (breedName,callback) => {
+  const p = breedFetcher(breedName);
+  p.then(data => {
+    callback(null,data[0].description);
+  }).catch(error => {
+    callback(error,null);
+  });
+};
+
+
 const catEmojis = ["😺", "😸", "😹", "😻", "😼", "😽", "🙀", "😿", "😾","🐈‍⬛"];
 const randomCatEmoji = () => {
   return catEmojis[Math.floor(Math.random() * catEmojis.length)];
 };
 
-module.exports = { breedFetcher, randomCatEmoji };
+module.exports = { breedFetcher, fetchBreedDescription, randomCatEmoji };
