@@ -15,3 +15,12 @@ To fetch information about a specific cat breed, run the following command:
   ```bash
   node breedFetcher.js <partial breed name>
   ```
+
+## Example
+
+  ```bash
+  node breedFetcher.js siberian
+  ```
+
+## Attribution
+Uses the [TheCatAPI](https://thecatapi.com/) to fetch information about cat breeds.
