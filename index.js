@@ -1,4 +1,4 @@
-const { queryBreedInfo,randomCatEmoji } = require('./breedFetcher');
+const { queryBreedInfo,randomCatEmoji } = require('.');
 
 (async() => {
   // get the query term from the command line

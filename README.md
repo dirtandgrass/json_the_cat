@@ -13,7 +13,7 @@ This is a command-line application that fetches information about cat breeds fro
 To fetch information about a specific cat breed, run the following command:
 
   ```bash
-  node breedFetcher.js <partial breed name>
+  node index.js <partial breed name>
   ```
 
 ## Example
