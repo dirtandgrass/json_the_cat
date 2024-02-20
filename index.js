@@ -1,4 +1,4 @@
-const { queryBreedInfo,randomCatEmoji } = require('.');
+const { breedFetcher,randomCatEmoji } = require('./modules/cats.js');
 
 (async() => {
   // get the query term from the command line
@@ -7,7 +7,7 @@ const { queryBreedInfo,randomCatEmoji } = require('.');
 
 
   try {
-    const data = await queryBreedInfo(query);
+    const data = await breedFetcher(query);
     // fancy output with emojis
     console.log(`🔍 ${data.length} result(s) found`);
     // show each result

@@ -1,6 +1,6 @@
 const req = require("request");
 // search thecatapi with the query parameter
-const queryBreedInfo = async query => {
+const breedFetcher = async query => {
   return new Promise((resolve,reject) => {
     req(`https://api.thecatapi.com/v1/breeds/search?q=${query}`, (error, response, body) => {
 
@@ -26,4 +26,4 @@ const randomCatEmoji = () => {
   return catEmojis[Math.floor(Math.random() * catEmojis.length)];
 };
 
-module.exports = { queryBreedInfo, randomCatEmoji };
+module.exports = { breedFetcher, randomCatEmoji };
